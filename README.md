@@ -25,13 +25,16 @@ HC3 (English QA) --Google Translate EN->AR--> Arabic HC3 --fine-tune--> 4 detect
 **Data**
 - **HC3** (Guo et al., 2023), English QA part: human answers vs ChatGPT answers to the same questions.
   Splits: train 68,335 / validation 17,114 / test 710. Train is 46,833 human and 21,502 ChatGPT, validation
-  11,713 and 5,401.
+  11,713 and 5,401. The test set is balanced, with 350 human and 360 ChatGPT answers.
 - **Translation.** Every question and answer is translated to Arabic (`arabic_detect/translate.py`). The
   translator retries with backoff, translates each unique string once (HC3 repeats a question for each of
   its answers) and writes to a JSONL cache, so a multi-hour run can be resumed.
 - **Out-of-domain set.** Questions from ARCD (Arabic reading comprehension) answered in Arabic by ChatGPT
   (1,946 answers) and by humans (1,027 answers), all collected manually. This text is native Arabic, not
   translated, and comes from a different domain.
+  ![Label distributions](docs/assets/label_distribution.png)
+  *Human vs ChatGPT answers in the HC3 splits and in the out-of-domain set. The chart counts the translated
+  files; the class counts above are the ones seen by the training run, which differ by a few dozen rows.*
 - **Adversarial sets** (`arabic_detect/attacks.py`). Each attack is applied to every ChatGPT answer of the
   out-of-domain set, so all six sets have the same size as the ChatGPT set:
 
@@ -104,6 +107,7 @@ What the numbers say:
   generalises best.
 
 Train and validation tables and notes on reading the adversarial numbers are in [`docs/results.md`](docs/results.md).
+How the project moved from proposal to final report is in [`docs/timeline.md`](docs/timeline.md).
 
 ## Repository layout
 
