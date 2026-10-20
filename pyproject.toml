@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arabic-detect"
+version = "1.0.0"
+description = "Detecting ChatGPT-generated Arabic text: HC3 translation, Arabic BERT detectors, out-of-domain and adversarial evaluation"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{ name = "Momen Ibrahim Fawzy" }]
+dependencies = ["numpy", "pandas", "openpyxl", "pyyaml", "tqdm"]
+
+[project.optional-dependencies]
+train = ["torch>=1.13", "transformers>=4.30", "accelerate", "datasets"]
+translate = ["googletrans==3.1.0a0"]
+plot = ["matplotlib"]
+dev = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

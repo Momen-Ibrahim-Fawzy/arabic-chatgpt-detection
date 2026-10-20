@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.ipynb_checkpoints/
+.env
+
+# data, translations, checkpoints and outputs are never committed
+/data/
+/runs/
+/results/
+*.xlsx
+*.safetensors
+*.bin
+*.pt
