@@ -1,0 +1,15 @@
+# Shared fine-tuning setup for camelbert-da / camelbert-msa / camelbert-mix / gigabert-v4
+model: camelbert-da
+max_length: 128
+batch_size: 128
+eval_batch_size: 256
+learning_rate: 3.0e-5
+epochs: 20
+warmup_ratio: 0.001
+save_total_limit: 2
+seed: 42
+fp16: true
+
+data:
+  train: data/hc3_ar/train.xlsx
+  validation: data/hc3_ar/validation.xlsx
